@@ -6,7 +6,7 @@ import { ADD_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const CommentForm = ({ appointmentId }) => {
+const CommentForm = ({ thoughtId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -18,7 +18,7 @@ const CommentForm = ({ appointmentId }) => {
     try {
       const { data } = await addComment({
         variables: {
-          appointmentId,
+          thoughtId,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
         },
@@ -41,7 +41,7 @@ const CommentForm = ({ appointmentId }) => {
 
   return (
     <div>
-      <h4>What are your appointments on this appointment?</h4>
+      <h4>What are your thoughts on this thought?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -77,7 +77,7 @@ const CommentForm = ({ appointmentId }) => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your appointments. Please{' '}
+          You need to be logged in to share your thoughts. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
