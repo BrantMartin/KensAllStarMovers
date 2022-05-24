@@ -14,14 +14,6 @@ const typeDefs = gql`
     appointmentText: String
     appointmentAuthor: String
     createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
   }
 
   type Auth {
@@ -41,9 +33,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addAppointment(appointmentText: String!): Appointment
-    addComment(appointmentId: ID!, commentText: String!): Appointment
     removeAppointment(appointmentId: ID!): Appointment
-    removeComment(appointmentId: ID!, commentId: ID!): Appointment
   }
 `;
 
