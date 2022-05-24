@@ -4,9 +4,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import CommentList from '../components/CommentList';
-import CommentForm from '../components/CommentForm';
-
 import { QUERY_SINGLE_APPOINTMENT } from '../utils/queries';
 
 const SingleAppointment = () => {
@@ -43,13 +40,6 @@ const SingleAppointment = () => {
         >
           {appointment.appointmentText}
         </blockquote>
-      </div>
-
-      <div className="my-5">
-        <CommentList comments={appointment.comments} />
-      </div>
-      <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm appointmentId={appointment._id} />
       </div>
     </div>
   );
