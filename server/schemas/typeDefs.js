@@ -11,7 +11,13 @@ const typeDefs = gql`
 
   type Appointment {
     _id: ID
-    appointmentText: String
+    name: String
+    phoneNumber: Int
+    email: String
+    startLocation: String
+    endLocation: String
+    date: String
+    bedroomNumber: Int
     appointmentAuthor: String
     createdAt: String
   }
