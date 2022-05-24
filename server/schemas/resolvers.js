@@ -64,23 +64,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    addComment: async (parent, { appointmentId, commentText }, context) => {
-      if (context.user) {
-        return Appointment.findOneAndUpdate(
-          { _id: appointmentId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
     removeAppointment: async (parent, { appointmentId }, context) => {
       if (context.user) {
         const appointment = await Appointment.findOneAndDelete({
@@ -94,23 +77,6 @@ const resolvers = {
         );
 
         return appointment;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { appointmentId, commentId }, context) => {
-      if (context.user) {
-        return Appointment.findOneAndUpdate(
-          { _id: appointmentId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
