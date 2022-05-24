@@ -19,7 +19,6 @@ const typeDefs = gql`
     date: String
     bedroomNumber: Int
     appointmentAuthor: String
-    createdAt: String
   }
 
   type Auth {
