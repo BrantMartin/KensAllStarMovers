@@ -25,10 +25,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_APPOINTMENT = gql`
-  mutation addAppointment($appointmentText: String!) {
-    addAppointment(appointmentText: $appointmentText) {
+  mutation addAppointment {
+    addAppointment {
       _id
-      appointmentText
+      name
+      phoneNumber
+      email
+      startLocation
+      endLocation
+      date
+      bedroomNumber
       appointmentAuthor
       createdAt
       comments {
@@ -43,7 +49,13 @@ export const ADD_COMMENT = gql`
   mutation addComment($appointmentId: ID!, $commentText: String!) {
     addComment(appointmentId: $appointmentId, commentText: $commentText) {
       _id
-      appointmentText
+      name
+      phoneNumber
+      email
+      startLocation
+      endLocation
+      date
+      bedroomNumber
       appointmentAuthor
       createdAt
       comments {

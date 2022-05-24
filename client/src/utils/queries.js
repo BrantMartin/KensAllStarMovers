@@ -19,7 +19,13 @@ export const QUERY_APPOINTMENTS = gql`
   query getAppointments {
     appointments {
       _id
-      appointmentText
+      name
+      phoneNumber
+      email
+      startLocation
+      endLocation
+      date
+      bedroomNumber
       appointmentAuthor
       createdAt
     }
@@ -30,7 +36,13 @@ export const QUERY_SINGLE_APPOINTMENT = gql`
   query getSingleAppointment($appointmentId: ID!) {
     appointment(appointmentId: $appointmentId) {
       _id
-      appointmentText
+      name
+      phoneNumber
+      email
+      startLocation
+      endLocation
+      date
+      bedroomNumber
       appointmentAuthor
       createdAt
       comments {
@@ -51,7 +63,13 @@ export const QUERY_ME = gql`
       email
       appointments {
         _id
-        appointmentText
+        name
+        phoneNumber
+        email
+        startLocation
+        endLocation
+        date
+        bedroomNumber
         appointmentAuthor
         createdAt
       }
