@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import AppointmentForm from '../components/AppointmentForm';
+
 import AppointmentList from '../components/AppointmentList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -19,7 +19,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
+    return <Navigate to="/me" /> ;
   }
 
   if (loading) {
@@ -50,14 +50,6 @@ const Profile = () => {
             showUsername={false}
           />
         </div>
-        {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <AppointmentForm />
-          </div>
-        )}
       </div>
     </div>
   );
