@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_APPOINTMENT } from "../../utils/mutations";
@@ -218,7 +218,10 @@ const AppointmentForm = () => {
           </button>
         </form>
       ) : (
-        <h4>hello world</h4>
+        <div>
+          <h4>Welcome to Ken's All Star Movers!</h4>
+          <p>Ken's All Star Movers was founded in 2019 and is proud to serve the Phoenix area with exceptional moving services. Your move isn't just about your new home, it's about you and your family having a stress free moving experience! Rest assured that your treasured items will be well cared for during the entire moving process!</p>
+        </div>
       )}
     </div>
   );
