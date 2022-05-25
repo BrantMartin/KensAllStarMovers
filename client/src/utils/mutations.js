@@ -28,7 +28,8 @@ export const ADD_APPOINTMENT = gql`
   mutation addAppointment {
     addAppointment {
       _id
-      name
+      firstName
+      lastName
       phoneNumber
       email
       startLocation

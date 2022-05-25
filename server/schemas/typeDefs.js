@@ -11,7 +11,8 @@ const typeDefs = gql`
 
   type Appointment {
     _id: ID
-    name: String
+    firstName: String
+    lastName: String
     phoneNumber: String
     email: String
     startLocation: String
