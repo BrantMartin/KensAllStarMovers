@@ -8,8 +8,14 @@ export const QUERY_USER = gql`
       email
       appointments {
         _id
-        appointmentText
-        createdAt
+        name
+        phoneNumber
+        email
+        startLocation
+        endLocation
+        date
+        bedroomNumber
+        appointmentAuthor
       }
     }
   }
@@ -43,12 +49,6 @@ export const QUERY_SINGLE_APPOINTMENT = gql`
       date
       bedroomNumber
       appointmentAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-      }
     }
   }
 `;
