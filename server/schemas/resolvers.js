@@ -51,7 +51,8 @@ const resolvers = {
     addAppointment: async (parent, { name, phoneNumber, email, startLocation, endLocation, date, bedroomNumber }, context) => {
       if (context.user) {
         const appointment = await Appointment.create({
-          name,
+          firstName,
+          lastName,
           phoneNumber,
           email,
           startLocation,
