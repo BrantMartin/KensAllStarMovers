@@ -10,8 +10,12 @@ import Auth from "../../utils/auth";
 const AppointmentForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  
-  const [characterCount, setCharacterCount] = useState(0);
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [startLocation, setStartLocation] = useState("");
+  const [endLocation, setEndLocation] = useState("");
+  const [date, setDate] = useState("");
+  const [bedroomNumber, setBedroomNumber] = useState("");
 
   const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT, {
     update(cache, { data: { addAppointment } }) {
@@ -43,11 +47,25 @@ const AppointmentForm = () => {
       const { data } = await addAppointment({
         variables: {
           firstName,
+          lastName,
+          phoneNumber,
+          email,
+          startLocation,
+          endLocation,
+          date,
+          bedroomNumber,
           appointmentAuthor: Auth.getProfile().data.username,
         },
       });
 
       setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneNumber("");
+      setStartLocation("");
+      setEndLocation("");
+      setDate("");
+      setBedroomNumber("");
     } catch (err) {
       console.error(err);
     }
@@ -56,9 +74,29 @@ const AppointmentForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "appointmentText" && value.length <= 280) {
+    if (name === "firstName") {
       setFirstName(value);
-      setCharacterCount(value.length);
+    }
+    else if (name === "lastName") {
+      setLastName(value);
+    }
+    else if (name === "email") {
+      setEmail(value);
+    }
+    else if (name === "phoneNumber") {
+      setPhoneNumber(value);
+    }
+    else if (name === "startLocation") {
+      setStartLocation(value);
+    }
+    else if (name === "endLocation") {
+      setEndLocation(value);
+    }
+    else if (name === "date") {
+      setDate(value);
+    }
+    else if (name === "bedroomNumber") {
+      setBedroomNumber(value);
     }
   };
 
@@ -70,7 +108,7 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="appointmentText"
+                name="firstName"
                 id="floating_first_name"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
@@ -89,11 +127,13 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="floating_last_name"
+                name="lastName"
                 id="floating_last_name"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={lastName}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_last_name"
@@ -107,10 +147,12 @@ const AppointmentForm = () => {
           <div class="relative z-0 w-full mb-6 group">
             <input
               type="email"
-              name="floating_email"
+              name="email"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required=""
+              value={email}
+                onChange={handleChange}
             ></input>
             <label
               for="floating_email"
@@ -124,11 +166,13 @@ const AppointmentForm = () => {
             <input
               type="tel"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              name="floating_phone"
+              name="phoneNumber"
               id="floating_phone"
               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required=""
+              value={phoneNumber}
+                onChange={handleChange}
             ></input>
             <label
               for="floating_email"
@@ -142,11 +186,13 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="floating_where_from"
+                name="startLocation"
                 id="floating_where_from"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={startLocation}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_where_from"
@@ -159,11 +205,13 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="floating_where_to"
+                name="endLocation"
                 id="floating_where_to"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={endLocation}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_where_to"
@@ -178,11 +226,13 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="date"
-                name="floating_date"
+                name="date"
                 id="floating_date"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={date}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_date"
@@ -195,11 +245,13 @@ const AppointmentForm = () => {
             <div class="relative z-0 w-full mb-6 group">
               <input
                 type="number"
-                name="floating_bedrooms"
+                name="bedroomNumber"
                 id="floating_bedrooms"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={bedroomNumber}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_bedrooms"
