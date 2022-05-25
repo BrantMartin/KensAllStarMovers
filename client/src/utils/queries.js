@@ -27,7 +27,6 @@ export const QUERY_APPOINTMENTS = gql`
       date
       bedroomNumber
       appointmentAuthor
-      createdAt
     }
   }
 `;
@@ -49,7 +48,6 @@ export const QUERY_SINGLE_APPOINTMENT = gql`
         _id
         commentText
         commentAuthor
-        createdAt
       }
     }
   }
@@ -71,7 +69,6 @@ export const QUERY_ME = gql`
         date
         bedroomNumber
         appointmentAuthor
-        createdAt
       }
     }
   }

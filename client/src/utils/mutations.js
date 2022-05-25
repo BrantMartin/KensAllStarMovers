@@ -37,32 +37,6 @@ export const ADD_APPOINTMENT = gql`
       bedroomNumber
       appointmentAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($appointmentId: ID!, $commentText: String!) {
-    addComment(appointmentId: $appointmentId, commentText: $commentText) {
-      _id
-      name
-      phoneNumber
-      email
-      startLocation
-      endLocation
-      date
-      bedroomNumber
-      appointmentAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;
