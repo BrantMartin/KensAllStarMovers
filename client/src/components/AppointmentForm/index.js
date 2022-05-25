@@ -8,7 +8,9 @@ import { QUERY_APPOINTMENTS, QUERY_ME } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const AppointmentForm = () => {
-  const [appointmentText, setAppointmentText] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT, {
@@ -40,12 +42,12 @@ const AppointmentForm = () => {
     try {
       const { data } = await addAppointment({
         variables: {
-          appointmentText,
+          firstName,
           appointmentAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setAppointmentText("");
+      setFirstName("");
     } catch (err) {
       console.error(err);
     }
@@ -55,7 +57,7 @@ const AppointmentForm = () => {
     const { name, value } = event.target;
 
     if (name === "appointmentText" && value.length <= 280) {
-      setAppointmentText(value);
+      setFirstName(value);
       setCharacterCount(value.length);
     }
   };
@@ -67,13 +69,14 @@ const AppointmentForm = () => {
           <div class="grid xl:grid-cols-2 xl:gap-6">
             <div class="relative z-0 w-full mb-6 group">
               <input
-                onChange={handleChange}
                 type="text"
-                name="floating_first_name"
+                name="appointmentText"
                 id="floating_first_name"
                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required=""
+                value={firstName}
+                onChange={handleChange}
               ></input>
               <label
                 for="floating_first_name"

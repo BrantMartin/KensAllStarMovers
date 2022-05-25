@@ -64,14 +64,6 @@ function App() {
                 path="/me"
                 element={<Profile />}
               />
-              <Route 
-                path="/profiles/:username"
-                element={<Profile />}
-              />
-              <Route 
-                path="/appointments/:appointmentId"
-                element={<SingleAppointment />}
-              />
             </Routes>
           </div>
           <Footer />
