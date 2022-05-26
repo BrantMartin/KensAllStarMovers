@@ -37,14 +37,30 @@ const AppointmentList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{appointment.appointmentText}</p>
+              <p>{appointment.firstName}</p>
+              <p>{appointment.lastName}</p>
+              <p>{appointment.phoneNumber}</p>
+              <p>{appointment.email}</p>
+              <p>Start Location: {appointment.startLocation}</p>
+              <p>End Location: {appointment.endLocation}</p>
+              <p>Scheduled Date: {appointment.date}</p>
+              <p>Bedrooms: {appointment.bedroomNumber}</p>
+              <div class="inline-flex">
+                <button class="bg-green-400 hover:bg-green-500 text-black-400 font-bold py-2 px-4 rounded-l">
+                  Update
+                </button>
+                <button class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r">
+                  Delete
+                </button>
+              </div>
             </div>
-            <Link
+
+            {/* <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/appointments/${appointment._id}`}
             >
               Join the discussion on this appointment.
-            </Link>
+            </Link> */}
           </div>
         ))}
     </div>
