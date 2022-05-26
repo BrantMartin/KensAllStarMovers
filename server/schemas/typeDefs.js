@@ -38,7 +38,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addAppointment(appointmentText: String!): Appointment
+    addAppointment(firstName: String!, lastName: String!, phoneNumber: String!, email: String!, startLocation: String!, endLocation: String!, date: String!, bedroomNumber: Int! ): Appointment
     removeAppointment(appointmentId: ID!): Appointment
   }
 `;
