@@ -2,11 +2,6 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const appointmentSchema = new Schema({
-  _id: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   firstName: {
     type: String,
     required: true,

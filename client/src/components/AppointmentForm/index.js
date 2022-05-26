@@ -53,7 +53,7 @@ const AppointmentForm = () => {
           startLocation,
           endLocation,
           date,
-          bedroomNumber,
+          bedroomNumber:  parseInt(bedroomNumber),
           appointmentAuthor: Auth.getProfile().data.username,
         },
       });
