@@ -47,3 +47,18 @@ mutation RemoveAppointment($appointmentId: ID!) {
     _id
   }
 }`
+
+export const UPDATE_APPOINTMENT = gql `
+mutation updateAppointment($appointmentId: ID!, $firstName: String!, $lastName: String!, $phoneNumber: String!, $email: String!, $startLocation: String!, $endLocation: String!, $date: String!, $bedroomNumber: Int! ) {
+  updateAppointment(appointmentId: $appointmentId, firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, email: $email, startLocation: $startLocation, endLocation: $endLocation, date: $date, bedroomNumber: $bedroomNumber ) {
+    _id
+    firstName
+    lastName
+    phoneNumber
+    email
+    startLocation
+    endLocation
+    date
+    bedroomNumber
+  }
+}`

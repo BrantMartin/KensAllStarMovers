@@ -86,6 +86,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    updateAppointment: async (parent, { appointmentId, firstName, lastName, phoneNumber, email, startLocation, endLocation, date, bedroomNumber }, context) => {
+      if (context.user) {
+       const appointment = await Appointment.findByIdAndUpdate(
+        { _id: appointmentId },
+         {
+         firstName,
+         lastName,
+         phoneNumber,
+         email,
+         startLocation,
+         endLocation,
+         date,
+         bedroomNumber
+       });
+       return appointment;
+     }
+      throw new AuthenticationError('You need to be logged in!');
+   },
   },
 };
 
