@@ -48,8 +48,8 @@ const resolvers = {
 
       return { token, user };
     },
-    addAppointment: async (parent, { name, phoneNumber, email, startLocation, endLocation, date, bedroomNumber }, context) => {
-      if (context.user) {
+    addAppointment: async (parent, { firstName, lastName, phoneNumber, email, startLocation, endLocation, date, bedroomNumber }, context) => {
+       if (context.user) {
         const appointment = await Appointment.create({
           firstName,
           lastName,
@@ -69,7 +69,7 @@ const resolvers = {
 
         return appointment;
       }
-      throw new AuthenticationError('You need to be logged in!');
+       throw new AuthenticationError('You need to be logged in!');
     },
     removeAppointment: async (parent, { appointmentId }, context) => {
       if (context.user) {

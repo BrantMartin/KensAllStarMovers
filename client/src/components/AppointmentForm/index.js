@@ -57,7 +57,7 @@ const AppointmentForm = () => {
           appointmentAuthor: Auth.getProfile().data.username,
         },
       });
-
+      console.log(data)
       setFirstName("");
       setLastName("");
       setEmail("");

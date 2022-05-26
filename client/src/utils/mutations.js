@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_APPOINTMENT = gql`
-  mutation addAppointment {
-    addAppointment {
+  mutation addAppointment($firstName: String!, $lastName: String!, $phoneNumber: String!, $email: String!, $startLocation: String!, $endLocation: String!, $date: String!, $bedroomNumber: Int! ) {
+    addAppointment(firstName: $firstName, lastName: $lastName, phoneNumber: $phoneNumber, email: $email, startLocation: $startLocation, endLocation: $endLocation, date: $date, bedroomNumber: $bedroomNumber ) {
       _id
       firstName
       lastName
@@ -37,7 +37,6 @@ export const ADD_APPOINTMENT = gql`
       date
       bedroomNumber
       appointmentAuthor
-      createdAt
     }
   }
 `;
