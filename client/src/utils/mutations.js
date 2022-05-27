@@ -41,8 +41,8 @@ export const ADD_APPOINTMENT = gql`
   }
 `;
 
-export const REMOVE_APPOINTMENT = gql`
-mutation RemoveAppointment($appointmentId: ID!) {
+export const REMOVE_APPOINTMENT = gql `
+mutation removeAppointment($appointmentId: ID!) {
   removeAppointment(appointmentId: $appointmentId) {
     _id
   }

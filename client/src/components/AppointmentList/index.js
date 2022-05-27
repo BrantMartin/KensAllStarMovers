@@ -1,5 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client"
+import { REMOVE_APPOINTMENT } from "../../utils/mutations";
+// import { QUERY_APPOINTMENTS } from "../../utils/queries";
 
 const AppointmentList = ({
   appointments,
@@ -7,9 +10,8 @@ const AppointmentList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!appointments.length) {
-    return <h3>No Appointments Yet</h3>;
-  }
+  
+  const [removeAppointment] = useMutation(REMOVE_APPOINTMENT);
 
   return (
     <div>
@@ -24,14 +26,14 @@ const AppointmentList = ({
                   to={`/profiles/${appointment.appointmentAuthor}`}
                 >
                   {appointment.appointmentAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    had this appointment on {appointment.createdAt}
+                  <span style={{ fontSize: "1rem" }}>
+                    have this appointment on {appointment.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
-                  <span style={{ fontSize: '1rem' }}>
-                    You had this appointment on {appointment.createdAt}
+                  <span style={{ fontSize: "1rem" }}>
+                    You have this appointment on {appointment.createdAt}
                   </span>
                 </>
               )}
@@ -49,7 +51,13 @@ const AppointmentList = ({
                 <button class="bg-green-400 hover:bg-green-500 text-black-400 font-bold py-2 px-4 rounded-l">
                   Update
                 </button>
-                <button class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r">
+                <button
+                  class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r"
+                  onClick={() => {
+                    removeAppointment({ variables: { appointmentId: appointment._id } });
+                    window.location.reload();
+                  }}
+                >
                   Delete
                 </button>
               </div>
