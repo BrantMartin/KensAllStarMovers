@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 
-// import { REMOVE_APPOINTMENT } from "../../utils/mutations";
+import { REMOVE_APPOINTMENT } from "../../utils/mutations";
 // import { QUERY_APPOINTMENTS, QUERY_ME } from "../../utils/queries";
 
 const AppointmentList = ({
@@ -11,7 +11,7 @@ const AppointmentList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  // const [removeAppointment, { error }] = useMutation(REMOVE_APPOINTMENT);
+   const [removeAppointment, { error }] = useMutation(REMOVE_APPOINTMENT);
   if (!appointments.length) {
     return <h3>No Appointments Yet</h3>;
   }
@@ -56,10 +56,10 @@ const AppointmentList = ({
                   Update
                 </button>
                 <button class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r"
-                // onClick={() => {
-                //     removeAppointment({ variables: { _id: appointment._id } });
-                //     window.location.reload();
-                //  }}
+                onClick={() => {
+                    removeAppointment({ variables: { _id: appointment._id } });
+                    window.location.reload();
+                 }}
                 >
                   Delete
                 </button>
