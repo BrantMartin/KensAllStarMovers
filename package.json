@@ -17,7 +17,9 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@headlessui/react": "^1.6.2",
-    "@heroicons/react": "^1.0.6"
+    "@heroicons/react": "^1.0.6",
+    "emailjs-com": "^3.2.0"
   }
 }

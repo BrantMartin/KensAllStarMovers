@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+img {
+  height: 150px;
+  width: 300px;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
