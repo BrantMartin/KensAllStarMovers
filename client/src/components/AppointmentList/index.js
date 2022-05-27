@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/react-hooks";
-
+import { useMutation } from "@apollo/client"
 import { REMOVE_APPOINTMENT } from "../../utils/mutations";
-// import { QUERY_APPOINTMENTS, QUERY_ME } from "../../utils/queries";
+// import { QUERY_APPOINTMENTS } from "../../utils/queries";
 
 const AppointmentList = ({
   appointments,
@@ -11,10 +10,8 @@ const AppointmentList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-   const [removeAppointment, { error }] = useMutation(REMOVE_APPOINTMENT);
-  if (!appointments.length) {
-    return <h3>No Appointments Yet</h3>;
-  }
+  
+  const [removeAppointment] = useMutation(REMOVE_APPOINTMENT);
 
   return (
     <div>
@@ -30,13 +27,13 @@ const AppointmentList = ({
                 >
                   {appointment.appointmentAuthor} <br />
                   <span style={{ fontSize: "1rem" }}>
-                    had this appointment on {appointment.createdAt}
+                    have this appointment on {appointment.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: "1rem" }}>
-                    You had this appointment on {appointment.createdAt}
+                    You have this appointment on {appointment.createdAt}
                   </span>
                 </>
               )}
@@ -51,15 +48,15 @@ const AppointmentList = ({
               <p>Scheduled Date: {appointment.date}</p>
               <p>Bedrooms: {appointment.bedroomNumber}</p>
               <div class="inline-flex">
-                <button
-                  class="bg-green-400 hover:bg-green-500 text-black-400 font-bold py-2 px-4 rounded-l">
+                <button class="bg-green-400 hover:bg-green-500 text-black-400 font-bold py-2 px-4 rounded-l">
                   Update
                 </button>
-                <button class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r"
-                onClick={() => {
-                    removeAppointment({ variables: { _id: appointment._id } });
+                <button
+                  class="bg-red-400 hover:bg-red-500 text-black-400 font-bold py-2 px-4 rounded-r"
+                  onClick={() => {
+                    removeAppointment({ variables: { appointmentId: appointment._id } });
                     window.location.reload();
-                 }}
+                  }}
                 >
                   Delete
                 </button>
